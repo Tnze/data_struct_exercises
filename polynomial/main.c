@@ -11,7 +11,7 @@ typedef struct Item *Polynomial;
 
 Polynomial NewPolynomial()
 {
-    Polynomial p = malloc(sizeof(Polynomial));
+    Polynomial p = malloc(sizeof(struct Item));
     p->coefficient = 0;
     p->index = 0;
     p->next = NULL;
