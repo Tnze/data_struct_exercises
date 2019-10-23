@@ -64,16 +64,35 @@ void Polynomial_output(Polynomial p)
 Polynomial Polynomial_merge(Polynomial p, Polynomial q)
 {
     Polynomial R = NewPolynomial();
-    do
+    while (p != NULL && q != NULL)
+    {
+        if (p->index > q->index)
+        {
+            Polynomial_insert(R, q->coefficient, q->index);
+            q = q->next;
+        }
+        else if (p->index < q->index)
+        {
+            Polynomial_insert(R, p->coefficient, p->index);
+            p = p->next;
+        }
+        else
+        {
+            Polynomial_insert(R, p->coefficient + q->coefficient, p->index);
+            p = p->next;
+            q = q->next;
+        }
+    }
+    while (p != NULL)
     {
         Polynomial_insert(R, p->coefficient, p->index);
         p = p->next;
-    } while (p != NULL);
-    do
+    }
+    while (q != NULL)
     {
         Polynomial_insert(R, q->coefficient, q->index);
         q = q->next;
-    } while (q != NULL);
+    }
     return R;
 }
 
