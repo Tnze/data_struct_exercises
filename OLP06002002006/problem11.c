@@ -18,7 +18,7 @@ int main()
     const int n = sizeof(values) / sizeof(values[0]); //物品个数                  //物品数量n
     int weights[n] = {1, 2, 3, 4};                    //物品的重量
 
-    int F[V] = {0}; //可以获得的最大价值
+    int F[V] = {0, -999999}; //可以获得的最大价值
 
     for (int i = 0; i < n; i++)
         for (int v = V - 1; v + 1 >= weights[i]; v--)
